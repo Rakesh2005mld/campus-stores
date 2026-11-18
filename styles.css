@@ -180,8 +180,12 @@ body > main {
   font-weight: 600;
   cursor: pointer;
 }
-#campus-stores button:hover {
+#campus-stores button:hover:not(:disabled) {
   border-color: var(--sel);
+}
+#campus-stores button:disabled {
+  opacity: 0.45;
+  cursor: not-allowed;
 }
 #campus-stores .primary {
   background: var(--sel);
@@ -245,7 +249,7 @@ body > main {
   grid-template-columns: minmax(0, 1fr) auto;
   align-items: center;
   gap: 8px;
-  padding: 9px 0;
+  padding: 10px 0;
 }
 #campus-stores .row small,
 #campus-stores label span {
@@ -262,6 +266,11 @@ body > main {
 #campus-stores .good {
   background: var(--ok);
   color: var(--oktxt);
+}
+#campus-stores .warn-tag {
+  background: var(--memo);
+  color: var(--memotxt);
+  border: 1px solid var(--mark);
 }
 #campus-stores .record {
   margin-top: 14px;
@@ -323,6 +332,182 @@ body > main {
   font-size: 12px;
   background: transparent;
 }
+
+/* === Omni-Search, Filter Pills & Predictive Suggestions === */
+#campus-stores .omni-wrap {
+  position: relative;
+  margin-bottom: 10px;
+}
+#campus-stores .omni-bar {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+#campus-stores .omni-bar input {
+  flex: 1;
+}
+#campus-stores .kbd-hint {
+  font-size: 11px;
+  padding: 2px 7px;
+  border: 1px solid var(--line);
+  border-radius: 4px;
+  background: var(--desk);
+  color: var(--quiet);
+}
+#campus-stores .suggest-box {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  margin-top: 6px;
+  align-items: center;
+  font-size: 12px;
+}
+#campus-stores .suggest-chip {
+  font-size: 11px;
+  padding: 3px 8px;
+  border-radius: 4px;
+  background: var(--desk);
+  font-weight: 500;
+}
+#campus-stores .pill-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  margin-bottom: 12px;
+  align-items: center;
+}
+#campus-stores .pill-btn {
+  font-size: 12px;
+  padding: 4px 10px;
+  border-radius: 999px;
+  background: var(--desk);
+  font-weight: 500;
+}
+#campus-stores .pill-btn[aria-pressed="true"] {
+  background: var(--sel);
+  color: var(--inv);
+  border-color: var(--sel);
+}
+
+/* === Club Trust Score & Auto-Hold Strip === */
+#campus-stores .trust-strip {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 8px;
+  margin-bottom: 14px;
+}
+#campus-stores .trust-card {
+  background: var(--desk);
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  padding: 9px 11px;
+  font-size: 12px;
+  display: grid;
+  gap: 4px;
+}
+#campus-stores .trust-card.hold {
+  border-color: var(--mark);
+  background: var(--memo);
+  color: var(--memotxt);
+}
+
+/* === Laser-QR Verification, Open-Box Checklist & Gate Pass === */
+#campus-stores .verify-panel {
+  margin: 12px 0;
+  padding: 13px;
+  background: var(--desk);
+  border: 1px solid var(--line);
+  border-left: 4px solid var(--sel);
+  border-radius: 8px;
+  display: grid;
+  gap: 10px;
+}
+#campus-stores code {
+  font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+  font-size: 12px;
+  background: var(--paper);
+  padding: 2px 5px;
+  border-radius: 4px;
+  border: 1px solid var(--line);
+}
+#campus-stores .alert-msg {
+  padding: 8px 10px;
+  border-radius: 6px;
+  font-size: 13px;
+  font-weight: 500;
+}
+#campus-stores .alert-msg.ok {
+  background: var(--ok);
+  color: var(--oktxt);
+}
+#campus-stores .alert-msg.warn {
+  background: var(--memo);
+  color: var(--memotxt);
+  border: 1px solid var(--mark);
+}
+#campus-stores .check-list {
+  display: grid;
+  gap: 6px;
+  font-size: 13px;
+}
+#campus-stores .check-list label {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  cursor: pointer;
+}
+#campus-stores .webcam-box {
+  width: 100%;
+  max-height: 190px;
+  object-fit: cover;
+  border-radius: 6px;
+  border: 1px solid var(--line);
+}
+#campus-stores .box-pill {
+  display: inline-block;
+  font-size: 11px;
+  background: var(--desk);
+  border: 1px solid var(--line);
+  padding: 1px 6px;
+  border-radius: 4px;
+  margin-right: 4px;
+  margin-top: 3px;
+}
+
+/* === Printable Laser-QR Engraving Tags === */
+#campus-stores .tag-sheet {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(175px, 1fr));
+  gap: 10px;
+  margin-top: 10px;
+}
+#campus-stores .laser-tag {
+  background: #fff;
+  color: #111;
+  border: 1.5px solid #111;
+  border-radius: 6px;
+  padding: 10px;
+  text-align: center;
+  font-size: 11px;
+  display: grid;
+  justify-items: center;
+  gap: 4px;
+}
+#campus-stores .laser-tag img {
+  width: 96px;
+  height: 96px;
+}
+
+/* === Per-Unit Audit History Timeline === */
+#campus-stores .audit-list {
+  margin-top: 8px;
+  padding-left: 10px;
+  border-left: 2px solid var(--line);
+  display: grid;
+  gap: 6px;
+  font-size: 12px;
+}
+
 @container (max-width:650px) {
   #campus-stores .shell {
     grid-template-columns: minmax(0, 1fr);
@@ -367,5 +552,18 @@ body > main {
   #campus-stores button,
   #campus-stores select {
     min-height: 44px;
+  }
+}
+@media print {
+  body * {
+    visibility: hidden;
+  }
+  #campus-stores .tag-sheet,
+  #campus-stores .tag-sheet * {
+    visibility: visible;
+  }
+  #campus-stores .tag-sheet {
+    position: fixed;
+    inset: 16px;
   }
 }
